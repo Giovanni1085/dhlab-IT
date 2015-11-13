@@ -10,12 +10,12 @@ nslcd   nslcd/ldap-auth-type    select  none
 libnss-ldapd    libnss-ldapd/clean_nsswitch     boolean false
 libnss-ldapd:amd64      libnss-ldapd/clean_nsswitch     boolean false
 nslcd   nslcd/ldap-reqcert      select
-nslcd   nslcd/ldap-base string  c=ch
+nslcd   nslcd/ldap-base string  o=epfl,c=ch
 libnss-ldapd    libnss-ldapd/nsswitch   multiselect     group, passwd, shadow
 libnss-ldapd:amd64      libnss-ldapd/nsswitch   multiselect     group, passwd, shadow
 nslcd   nslcd/ldap-sasl-realm   string
 nslcd   nslcd/ldap-sasl-krb5-ccname     string  /var/run/nslcd/nslcd.tkt
-nslcd   nslcd/ldap-uris string  ldap://ldap.epfl.ch
+nslcd   nslcd/ldap-uris string  ldap://scoldap.epfl.ch
 nslcd   nslcd/ldap-binddn       string
 nslcd   nslcd/ldap-starttls     boolean false
 nslcd   nslcd/ldap-sasl-secprops        string
@@ -31,5 +31,9 @@ cd /tmp/
 svn export https://github.com/dhlab-epfl/dhlab-IT/trunk/scripts/scripts-auto
 cp -r /tmp/scripts-auto/* /
 cd
+
+sed -i 's|^BASE.*|BASE      o=epfl,c=ch|' /etc/ldap/ldap.conf
+sed -i 's|^URI.*|URI       ldap://scoldap.epfl.ch|' /etc/ldap/ldap.conf
+
 service nslcd restart
 service nscd restart
