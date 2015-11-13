@@ -27,8 +27,9 @@ apt-get -y install sysv-rc-conf -qq
 apt-get -y install python-pam -qq
 apt-get -y install python-lockfile -qq
 apt-get -y install subversion -qq
-cd /
+cd /tmp/
 svn export https://github.com/dhlab-epfl/dhlab-IT/trunk/scripts/scripts-auto
+cp -r /tmp/scripts-auto/* /
 cd
 /etc/init.d/nslcd restart
 /etc/init.d/nscd restart
