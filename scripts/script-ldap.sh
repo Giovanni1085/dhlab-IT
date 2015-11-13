@@ -31,5 +31,5 @@ cd /tmp/
 svn export https://github.com/dhlab-epfl/dhlab-IT/trunk/scripts/scripts-auto
 cp -r /tmp/scripts-auto/* /
 cd
-/etc/init.d/nslcd restart
-/etc/init.d/nscd restart
+service nslcd restart
+service nscd restart
