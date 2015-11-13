@@ -3,7 +3,7 @@ apt-get update
 apt-get upgrade -y
 
 # Install LDAP + Autmount
-wget -O script-ldap.sh https://www.dropbox.com/s/a2dxg0xdooe42ma/script-ldap.sh?dl=0
+wget -O script-ldap.sh https://raw.githubusercontent.com/dhlab-epfl/dhlab-IT/master/scripts/script-ldap.sh
 chmod a+x script-ldap.sh
 ./script-ldap.sh
 rm script-ldap.sh

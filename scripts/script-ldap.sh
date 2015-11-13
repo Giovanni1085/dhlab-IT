@@ -26,10 +26,9 @@ apt-get -y install cifs-utils -qq
 apt-get -y install sysv-rc-conf -qq
 apt-get -y install python-pam -qq
 apt-get -y install python-lockfile -qq
-cd /tmp
-wget http://siipc20.epfl.ch/download/scripts-auto.tar.gz
+apt-get -y install subversion -qq
 cd /
-tar xzf /tmp/scripts-auto.tar.gz
+svn export https://github.com/dhlab-epfl/dhlab-IT/trunk/scripts/scripts-auto
 cd
 /etc/init.d/nslcd restart
 /etc/init.d/nscd restart
