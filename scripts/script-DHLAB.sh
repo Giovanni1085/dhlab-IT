@@ -31,7 +31,7 @@ curl -s http://install.iccluster.epfl.ch/scripts/soft/matlab/matlab85a.sh  >> ma
 apt-get install -y g++ git nfs-common htop screen vim unzip
 
 # python ftw
-apt-get install -y python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
+apt-get install -y python-numpy python-pip python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
 # scikit-learn, could be built from source as well
 apt-get install -y python-sklearn
