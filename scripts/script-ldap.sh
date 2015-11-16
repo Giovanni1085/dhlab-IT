@@ -20,7 +20,7 @@ nslcd   nslcd/ldap-binddn       string
 nslcd   nslcd/ldap-starttls     boolean false
 nslcd   nslcd/ldap-sasl-secprops        string
 EOF
-apt-get -y install libpam-ldapd libnss-ldapd nss-updatedb libnss-db nscd nslcd ldap-utils -qq
+apt-get install -y libpam-ldapd libnss-ldapd nss-updatedb libnss-db nscd nslcd ldap-utils tcsh openssh-server ntp autofs autofs-ldap -qq
 apt-get -y install python-ldap -qq
 apt-get -y install cifs-utils -qq
 apt-get -y install sysv-rc-conf -qq
@@ -32,8 +32,13 @@ svn export https://github.com/dhlab-epfl/dhlab-IT/trunk/scripts/scripts-auto
 cp -r /tmp/scripts-auto/* /
 cd
 
-sed -i 's|^BASE.*|BASE      o=epfl,c=ch|' /etc/ldap/ldap.conf
-sed -i 's|^URI.*|URI       ldap://scoldap.epfl.ch|' /etc/ldap/ldap.conf
+echo "tls_cacertfile /etc/openldap/cacerts/quovadis.pem" >> /etc/nslcd.conf
+
+sed -i 's|^# account *required *pam_access.so|account required pam_access.so|' /etc/pam.d/login
+sed -i 's|^# account *required *pam_access.so|account required pam_access.so|' /etc/pam.d/sshd
+
+mkdir -p /etc/openldap/cacerts
+wget -O /etc/openldap/cacerts/quovadis.pem http://linux.epfl.ch/files/content/sites/linuxline/files/shared/configs/quovadis.pem -q
 
 service nslcd restart
 service nscd restart
