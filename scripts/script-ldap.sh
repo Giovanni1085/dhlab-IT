@@ -15,7 +15,7 @@ libnss-ldapd    libnss-ldapd/nsswitch   multiselect     group, passwd, shadow
 libnss-ldapd:amd64      libnss-ldapd/nsswitch   multiselect     group, passwd, shadow
 nslcd   nslcd/ldap-sasl-realm   string
 nslcd   nslcd/ldap-sasl-krb5-ccname     string  /var/run/nslcd/nslcd.tkt
-nslcd   nslcd/ldap-uris string  ldap://ldap.epfl.ch
+nslcd   nslcd/ldap-uris string  ldap://scoldap.epfl.ch
 nslcd   nslcd/ldap-binddn       string
 nslcd   nslcd/ldap-starttls     boolean false
 nslcd   nslcd/ldap-sasl-secprops        string
@@ -32,8 +32,9 @@ svn export https://github.com/dhlab-epfl/dhlab-IT/trunk/scripts/scripts-auto
 cp -r /tmp/scripts-auto/* /
 cd
 
-echo "tls_cacertfile /etc/openldap/cacerts/quovadis.pem" >> /etc/nslcd.conf
+sed -i 's|nis|ldap|' /etc/nsswitch.conf
 
+echo "tls_cacertfile /etc/openldap/cacerts/quovadis.pem" >> /etc/nslcd.conf
 sed -i 's|^# account *required *pam_access.so|account required pam_access.so|' /etc/pam.d/login
 sed -i 's|^# account *required *pam_access.so|account required pam_access.so|' /etc/pam.d/sshd
 
