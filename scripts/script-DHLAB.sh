@@ -28,7 +28,7 @@ mount -a
 curl -s http://install.iccluster.epfl.ch/scripts/soft/matlab/matlab85a.sh  >> matlab85a.sh ; chmod +x matlab85a.sh; ./matlab85a.sh
 
 #generic dependencies
-apt-get install -y g++ git nfs-common htop screen vim unzip
+apt-get install -y g++ git nfs-common htop screen vim unzip camke cmake-curses-gui
 
 # python ftw
 apt-get install -y python-numpy python-pip python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
