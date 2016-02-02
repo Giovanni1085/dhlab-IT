@@ -36,6 +36,12 @@ apt-get install -y python-numpy python-pip python-scipy python-matplotlib ipytho
 # scikit-learn, could be built from source as well
 apt-get install -y python-sklearn
 
+# Install CUDA
+wget -O install-cuda.sh https://raw.githubusercontent.com/dhlab-epfl/dhlab-IT/master/scripts/install-cuda.sh
+chmod a+x install-cuda.sh
+./install-cuda.sh
+rm install-cuda.sh
+
 # caffe dependencies (http://caffe.berkeleyvision.org/install_apt.html)
 #apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler 
 #apt-get install -y --no-install-recommends libboost-all-dev
