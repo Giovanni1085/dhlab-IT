@@ -16,3 +16,6 @@ wget http://install.iccluster.epfl.ch/scripts/soft/cuda/cudnn-7.0-linux-x64-v4.0
 tar -zxf  /tmp/cudnn-7.0-linux-x64-v4.0-rc.tgz -C /tmp/
 cp /tmp/cuda/include/cudnn.h /usr/local/cuda-7.5/include/
 cp /tmp/cuda/lib64/* /usr/local/cuda-7.5/lib64/
+
+# Update list of libraries
+ldconfig
