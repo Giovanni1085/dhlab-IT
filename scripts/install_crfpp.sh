@@ -7,7 +7,7 @@ cd CRF++-0.58/
 make
 make install
 make clean
-ld-config
+ldconfig
 rm CRF++.tar.gz
 # install python bindings
  cd CRF++-0.58/
