@@ -16,7 +16,7 @@ curl -s http://install.iccluster.epfl.ch/scripts/it/scratchVolume.sh  >> scratch
 # Mount NAS shares
 apt-get install -y cifs-utils
 # ATTENTION!!!!! No folder with a white space in it!! like "Le Temps" or "Linked Books"
-for folder in {"cluster-nas","homes","Garzoni","le_temps_data"}; do  #No space in the list! 
+for folder in {"cluster-nas","homes","Garzoni","le_temps_data","ngrams"}; do  #No space in the list! 
 mkdir "/mnt/$folder"
 cat <<EOF >> /etc/fstab
 //dhlabsrv1.epfl.ch/$folder /mnt/$folder cifs _netdev,iocharset=utf8,username=cluster,password=QXA{1f,sec=ntlmssp,gid=100 0 0
@@ -28,13 +28,19 @@ mount -a
 curl -s http://install.iccluster.epfl.ch/scripts/soft/matlab/matlab85a.sh  >> matlab85a.sh ; chmod +x matlab85a.sh; ./matlab85a.sh
 
 #generic dependencies
-apt-get install -y g++ git nfs-common htop screen vim unzip
+apt-get install -y g++ git nfs-common htop screen vim unzip cmake cmake-curses-gui
 
 # python ftw
-apt-get install -y python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
+apt-get install -y python-numpy python-pip python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
 # scikit-learn, could be built from source as well
 apt-get install -y python-sklearn
+
+# Install CUDA
+wget -O install-cuda.sh https://raw.githubusercontent.com/dhlab-epfl/dhlab-IT/master/scripts/install-cuda.sh
+chmod a+x install-cuda.sh
+./install-cuda.sh
+rm install-cuda.sh
 
 # caffe dependencies (http://caffe.berkeleyvision.org/install_apt.html)
 #apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler 
