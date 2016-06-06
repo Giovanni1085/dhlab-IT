@@ -16,7 +16,7 @@ curl -s http://install.iccluster.epfl.ch/scripts/it/scratchVolume.sh  >> scratch
 # Mount NAS shares
 apt-get install -y cifs-utils
 # ATTENTION!!!!! No folder with a white space in it!! like "Le Temps" or "Linked Books"
-for folder in {"cluster-nas","homes","Garzoni","le_temps_data","ngrams"}; do  #No space in the list! 
+for folder in {"cluster-nas","homes","Garzoni","le_temps_data","ngrams","Ornaments_IMG"}; do  #No space in the list! 
 mkdir "/mnt/$folder"
 cat <<EOF >> /etc/fstab
 //dhlabsrv1.epfl.ch/$folder /mnt/$folder cifs _netdev,iocharset=utf8,username=cluster,password=QXA{1f,sec=ntlmssp,gid=100 0 0
