@@ -3,7 +3,7 @@ apt-get update
 apt-get upgrade -y
 
 # Install LDAP + Autmount
-wget -O script-ldap.sh https://raw.githubusercontent.com/dhlab-epfl/dhlab-IT/master/scripts/script-ldap.sh
+wget -O script-ldap.sh https://raw.githubusercontent.com/mromanello/dhlab-IT/master/scripts/script-ldap.sh
 chmod a+x script-ldap.sh
 ./script-ldap.sh
 rm script-ldap.sh
@@ -37,7 +37,7 @@ apt-get install -y python-numpy python-pip python-scipy python-matplotlib ipytho
 apt-get install -y python-sklearn
 
 # Install CUDA
-wget -O install-cuda.sh https://raw.githubusercontent.com/dhlab-epfl/dhlab-IT/master/scripts/install-cuda.sh
+wget -O install-cuda.sh https://raw.githubusercontent.com/mromanello/dhlab-IT/master/scripts/install-cuda.sh
 chmod a+x install-cuda.sh
 ./install-cuda.sh
 rm install-cuda.sh
